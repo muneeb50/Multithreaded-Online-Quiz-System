@@ -1,0 +1,14 @@
+127.0.0.1,37578,Math,IQ,0
+127.0.0.1,43002,Science,Biology,1
+127.0.0.1,37626,Math,IQ,0
+127.0.0.1,43060,Science,Physics,0
+127.0.0.1,43070,Science,Chemistry,4
+127.0.0.1,43076,Science,Biology,1
+127.0.0.1,37682,Math,Geometry,0
+127.0.0.1,37690,Math,Algebra,0
+127.0.0.1,37696,Math,IQ,0
+127.0.0.1,43120,Science,Physics,0
+127.0.0.1,43126,Science,Chemistry,4
+127.0.0.1,43132,Science,Biology,1
+127.0.0.1,37762,Math,IQ,2
+127.0.0.1,37806,Math,Geometry,0

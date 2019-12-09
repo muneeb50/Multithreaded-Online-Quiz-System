@@ -1,8 +1,3 @@
-
-/* 
- * File:   Main_Server.c
- * Author: Muneeb Ahmad
- */
 #include <stdio.h> 
 #include <string.h> 
 #include <sys/socket.h> //socket
@@ -11,7 +6,7 @@
 #include <pthread.h>
 
 /*
- * Main Server
+  Main Server
  */
 
 int check_format_of_sub_server_msg(char str[])
@@ -147,7 +142,7 @@ void *client_thread_func (int *client_sock)
 
     printf("starting client_thread_func\n");
     char server_message[2000], client_message[2000];
-    char str[]="Please Enter your Test option\nScience\nMath\nEnglish\n\n";
+    char str[]="Please Enter your Test option\nScience\nMath\n\n";
 
     //Cleaning the Buffers
 

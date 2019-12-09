@@ -1,15 +1,9 @@
-
-/* 
- * File:   client.c
- * Author: Muneeb Ahmad
- *
- */
-
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h> //socket
 #include <arpa/inet.h> //inet_addr
 #include <stdlib.h>
+
 
 /*
  * client
@@ -17,10 +11,7 @@
 
 
 
-int main(int argc, char** argv) {
-
-
-    
+int main(int argc, char** argv) {    
         int socket_desc;
         struct sockaddr_in server_addr;
         char server_message[2000], client_message[2000];
@@ -204,6 +195,36 @@ int main(int argc, char** argv) {
         //strcpy(server_message,"Science,127.0.0.1,2000");
         printf("\nSub Server Message: %s\n",server_message);
         
+        //Priyesh's Contribution
+
+        for( int i = 0 ; i < 5 ; i++ )
+        {
+                
+                //Get Input from the User
+                
+                printf("\nEnter Ans: ");
+                gets(client_message);
+                
+                //Send the message to Server
+                
+                if(send(socket_desc, client_message, strlen(client_message),0) < 0)
+                {
+                        printf("\nSub Server Send Failed. Error!!!!\n");
+                        return -1;
+                }
+                
+                //Receive the message back from the server
+                memset(server_message,'\0',sizeof(server_message));
+                if(recv(socket_desc, server_message, sizeof(server_message),0) < 0)
+                {
+                        printf("\nSub Server Receive Failed. Error!!!!!\n");
+                        return -1;
+                }
+                
+
+                //strcpy(server_message,"Science,127.0.0.1,2000");
+                printf("\nSub Server Message: %s\n",server_message);
+        }
         
         close(socket_desc);
         
