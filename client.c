@@ -10,7 +10,7 @@
 #include <sys/socket.h> //socket
 #include <arpa/inet.h> //inet_addr
 #include <stdlib.h>
-
+#include <unistd.h>
 /*
  * client
  */

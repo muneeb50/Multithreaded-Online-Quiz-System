@@ -5,6 +5,8 @@
 #include <sys/socket.h> //socket
 #include <arpa/inet.h> //inet_addr
 #include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
 
 int send_msg_to_main_server(char msg[])
 {
@@ -98,7 +100,7 @@ void *client_thread_func (void* c_info)
     if (send(client_sock, server_message, strlen(server_message),0)<0)
     {
         printf("client_thread_func Send Failed. Error!!!!!\n");
-        return;
+        return 0;
     }
     
     //Receive the message from the client
@@ -106,7 +108,7 @@ void *client_thread_func (void* c_info)
         if (recv(client_sock, client_message, sizeof(client_message),0) < 0)
         {
                 printf("client_thread_func Receive Failed. Error!!!!!\n");
-                return;
+                return 0;
         }
 
 
@@ -133,7 +135,7 @@ void *client_thread_func (void* c_info)
         if (send(client_sock, server_message, strlen(server_message),0)<0)
         {
                 printf("client_thread_func Send Failed. Error!!!!!\n");
-                return;
+                return 0;
         }
         
         if(send_msg_to_main_server(server_message)==-1)

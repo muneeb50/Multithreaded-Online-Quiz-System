@@ -9,6 +9,7 @@
 #include <arpa/inet.h> //inet_addr
 #include <stdlib.h>
 #include <pthread.h>
+#include <unistd.h>
 
 /*
  * Main Server
@@ -42,7 +43,7 @@ void *sub_server_thread_func (int *client_sock)
     if (recv(client_sock, client_message, sizeof(client_message),0) < 0)
     {
             printf("sub_server_thread_func Recieve Failed. Error!!!!!\n");
-            return;
+            return 0;
     }
 
 
@@ -158,7 +159,7 @@ void *client_thread_func (int *client_sock)
     if (send(client_sock, server_message, strlen(server_message),0)<0)
     {
         printf("client_thread_func Send Failed. Error!!!!!\n");
-        return;
+        return 0;
     }
 
     //while(1)
@@ -168,7 +169,7 @@ void *client_thread_func (int *client_sock)
         if (recv(client_sock, client_message, sizeof(client_message),0) < 0)
         {
                 printf("client_thread_func Receive Failed. Error!!!!!\n");
-                return;
+                return 0;
         }
 
         printf("client_thread_func Client Sock: %i\n",client_sock);
@@ -182,7 +183,7 @@ void *client_thread_func (int *client_sock)
         if (send(client_sock, server_message, strlen(server_message),0)<0)
         {
                 printf("client_thread_func Send Failed. Error!!!!!\n");
-                return;
+                return 0;
         }
 
         memset(server_message,'\0',sizeof(server_message));
@@ -223,7 +224,7 @@ void *sub_server_func (int *sub_socket_desc)
         if (client_sock < 0)
         {
                 printf("Accept Failed. Error!!!!!!\n");
-                return;
+                return 0;
         }
         else
         {
@@ -267,7 +268,7 @@ void *client_func (int *socket_desc)
         if (client_sock < 0)
         {
                 printf("Accept Failed. Error!!!!!!\n");
-                return;
+                return 0;
         }
         else
         {
